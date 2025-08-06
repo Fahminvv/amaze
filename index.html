@@ -1,260 +1,197 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fahmin - Personal Website</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', system-ui, sans-serif;
-        }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Fahmin - Personal Site</title>
+  <style>
+    :root {
+      --bg: #fefaf6;
+      --card: #ffffff;
+      --text-dark: #2e2e2e;
+      --text-light: #6b6b6b;
+      --accent: #ff8c66;
+      --muted: #f3e8e2;
+      --radius: 18px;
+    }
 
-        :root {
-            --primary: #4A90E2;
-            --secondary: #50E3C2;
-            --accent: #FF6B6B;
-            --dark: #2C3E50;
-            --light: #F7F9FC;
-        }
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', sans-serif;
+    }
 
-        body {
-            line-height: 1.6;
-            color: var(--dark);
-            background-color: var(--light);
-        }
+    body {
+      background: var(--bg);
+      color: var(--text-dark);
+      line-height: 1.7;
+    }
 
-        section {
-            padding: 4rem 2rem;
-        }
+    header {
+      background: white;
+      padding: 1.5rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        /* Header */
-        header {
-            background: var(--dark);
-            color: white;
-            padding: 1rem;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-        }
+    nav h2 {
+      color: var(--accent);
+    }
 
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
 
-        nav ul {
-            display: flex;
-            gap: 2rem;
-            list-style: none;
-        }
+    nav a {
+      text-decoration: none;
+      color: var(--text-dark);
+      font-weight: 600;
+    }
 
-        nav a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
+    section {
+      padding: 4rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
 
-        nav a:hover {
-            color: var(--secondary);
-        }
+    .hero {
+      text-align: center;
+      margin-top: 3rem;
+    }
 
-        /* Hero Section */
-        #hero {
-            background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            margin-top: 4rem;
-        }
+    .hero h1 {
+      font-size: 3rem;
+      background: linear-gradient(to right, #000, var(--accent));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
-            background: linear-gradient(to right, #fff, var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    .hero p {
+      color: var(--text-light);
+      margin-top: 1rem;
+    }
 
-        /* About Section */
-        #about {
-            background: white;
-        }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
 
-        /* Skills Section */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1.5rem;
-            margin-top: 2rem;
-        }
+    .card {
+      background: var(--card);
+      padding: 2rem;
+      border-radius: var(--radius);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+      transition: transform 0.3s;
+    }
 
-        .skill-card {
-            background: white;
-            padding: 1.5rem;
-            border-radius: 12px;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            border: 2px solid transparent;
-            transition: all 0.3s;
-        }
+    .card:hover {
+      transform: translateY(-5px);
+    }
 
-        .skill-card:nth-child(1) { border-color: var(--primary); }
-        .skill-card:nth-child(2) { border-color: var(--secondary); }
-        .skill-card:nth-child(3) { border-color: var(--accent); }
-        .skill-card:nth-child(4) { border-color: #9B59B6; }
+    .blog-card h3 {
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
 
-        .skill-card:hover {
-            transform: translateY(-5px);
-        }
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: var(--muted);
+      color: var(--text-light);
+    }
 
-        /* Blog Section */
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
+    button {
+      background: var(--accent);
+      color: white;
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-weight: 600;
+    }
 
-        .blog-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-        }
+    button:hover {
+      opacity: 0.9;
+    }
 
-        .blog-card:hover {
-            transform: translateY(-5px);
-        }
-
-        .blog-content {
-            padding: 1.5rem;
-            border-top: 4px solid var(--accent);
-        }
-
-        /* Contact Section */
-        #contact {
-            background: linear-gradient(135deg, var(--dark), var(--primary));
-            color: white;
-        }
-
-        .contact-info {
-            margin-top: 2rem;
-            padding: 2rem;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 12px;
-            backdrop-filter: blur(5px);
-        }
-
-        h2 {
-            color: var(--primary);
-            margin-bottom: 1.5rem;
-        }
-
-        #contact h2 {
-            color: white;
-        }
-
-        @media (max-width: 768px) {
-            nav ul {
-                display: none;
-            }
-
-            .hero-content h1 {
-                font-size: 2rem;
-            }
-
-            section {
-                padding: 2rem 1rem;
-            }
-        }
-    </style>
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        <nav class="container">
-            <h2>Fahmin</h2>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#blog">Blog</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
-    </header>
+  <header>
+    <nav>
+      <h2>Fahmin</h2>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#blog">Blog</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
 
-    <section id="hero">
-        <div class="container hero-content">
-            <h1>Hi, I'm Fahmin</h1>
-            <p>A student passionate about coding, teaching, and building products</p>
-        </div>
-    </section>
+  <section class="hero">
+    <h1>Hi, I'm Fahmin</h1>
+    <p>Exploring creativity through design, code, and community</p>
+  </section>
 
-    <section id="about">
-        <div class="container">
-            <h2>About Me</h2>
-            <p>I'm a student currently learning web development. I love coding, teaching, talking to people, and building products. In my free time, I enjoy crafting and writing blogs about my experiences.</p>
-        </div>
-    </section>
+  <section id="about">
+    <h2>About Me</h2>
+    <p>I'm a student learning web development. I love coding, teaching, and building experiences. I also enjoy visual storytelling, design, and community learning.</p>
+  </section>
 
-    <section id="skills">
-        <div class="container">
-            <h2>My Skills</h2>
-            <div class="skills-grid">
-                <div class="skill-card">
-                    <h3>Leadership</h3>
-                </div>
-                <div class="skill-card">
-                    <h3>Communication</h3>
-                </div>
-                <div class="skill-card">
-                    <h3>Coding</h3>
-                </div>
-                <div class="skill-card">
-                    <h3>Swimming</h3>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="skills">
+    <h2>Skills</h2>
+    <div class="grid">
+      <div class="card"><h3>Leadership</h3></div>
+      <div class="card"><h3>Communication</h3></div>
+      <div class="card"><h3>Coding</h3></div>
+      <div class="card"><h3>Photography</h3></div>
+    </div>
+  </section>
 
-    <section id="blog">
-        <div class="container">
-            <h2>Latest Blog Posts</h2>
-            <div class="blog-grid">
-                <div class="blog-card">
-                    <div class="blog-content">
-                        <h3>My Journey in Web Development</h3>
-                        <p>Learning web development and participating in TinkerHub hackathon...</p>
-                    </div>
-                </div>
-                <div class="blog-card">
-                    <div class="blog-content">
-                        <h3>Creative Crafts</h3>
-                        <p>Exploring my creative side through various craft projects...</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+  <section id="blog">
+    <h2>Blog Posts</h2>
+    <div class="grid">
+      <div class="card blog-card">
+        <h3>Learning by Doing</h3>
+        <p>How hands-on learning made me a better developer and thinker.</p>
+      </div>
+      <div class="card blog-card">
+        <h3>Craft & Visual Art</h3>
+        <p>Expressing creativity through hand-made projects and visual storytelling.</p>
+      </div>
+    </div>
+  </section>
 
-    <section id="contact">
-        <div class="container">
-            <h2>Get in Touch</h2>
-            <div class="contact-info">
-                <p>Email: fahmin@gmail.com</p>
-            </div>
-        </div>
-    </section>
+  <section id="contact">
+    <h2>Contact</h2>
+    <div class="card">
+      <p>Email: <strong>fahmin@gmail.com</strong></p>
+      <p>Want to chat? <button onclick="alert('Thanks for reaching out!')">Say Hello</button></p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Fahmin. All rights reserved.</p>
+  </footer>
 </body>
 </html>
+!DO
